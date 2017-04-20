@@ -11,6 +11,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+		\App\Post::unguard();
+	    $this->call(PostsTableSeeder::class);
+	    \App\Post::reguard();
         // $this->call(UsersTableSeeder::class);
     }
 }
