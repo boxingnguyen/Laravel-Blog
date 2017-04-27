@@ -6,7 +6,7 @@ use App\Post;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Articles;
 use Illuminate\Support\Facades\Input;
-
+use Illuminate\Validation\Validator;
 class ArticlesController extends Controller
 {
    public function index()
@@ -26,11 +26,11 @@ class ArticlesController extends Controller
 		return view('posts.create');
    }
 
-   public function store(ArticleFormRequest $request)
+   public function store(ArticleFormRequest $formRequest)
    {
    	    //dd(Input::get('content')); // die and dump -> in ra gia tri tra ve de test
-        $title = Input::get('title');
-        $content = Input::get('content');
+        $title = $FormRequest->input('title');
+        $content = $articleFormRequest->input('content');
         Post::create([
         	'title' =>  $title,
             'body'  =>  $content

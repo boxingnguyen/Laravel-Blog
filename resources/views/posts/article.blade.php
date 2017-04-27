@@ -1,6 +1,6 @@
 @extends('main')
 
-@section('title', '| Show an article')
+@section('title', '| Show the post')
 
 @section('stylesheets')
     {{--<link rel="stylesheet" type="text/css" href="style.css">--}}

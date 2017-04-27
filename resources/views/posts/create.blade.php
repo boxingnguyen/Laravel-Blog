@@ -1,6 +1,6 @@
 @extends('main')
 
-@section('title', '| Show an article')
+@section('title', '| New Post')
 
 @section('stylesheets')
     {{--<link rel="stylesheet" type="text/css" href="style.css">--}}
@@ -15,9 +15,22 @@
                 <hr> <!-- duong gach ngang-->
             </div>
         </div>
-
         <div class="row">
             <div class="col-sm-6 col-sm-offset-3">
+                <?php
+                    echo var_dump($errors);
+
+                ?>
+                @if (count($errors) >0)
+                    <div class="alert alert-danger">
+                        <strong>Whoops!</strong>There were some problems with your input.<br><br>
+                        <ul>
+                            @foreach($errors->all() as $error)
+                                <li> {{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <form action="{{ route('article.store') }}" method="POST" class="form-horizontal">
 
                     <input type="hidden" name="_token" value="{{ csrf_token() }}"> <!-- in ra token sang kernel.php de xu ly, sua loi TokenMismatch-->
